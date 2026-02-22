@@ -44,3 +44,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', checkCards);
 });
+
+
+
+// --- Gallery Lightbox Logic ---
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const galleryImages = document.querySelectorAll('.gallery-img');
+const closeLightbox = document.querySelector('.close-lightbox');
+
+// Only run this if we are on the gallery page
+if (lightbox) {
+    // Open lightbox on image tap
+    galleryImages.forEach(img => {
+        img.addEventListener('click', function () {
+            lightbox.classList.remove('lightbox-hidden');
+            lightboxImg.src = this.src; // Copy the clicked image source to the fullscreen view
+        });
+    });
+
+    // Close lightbox on 'X' tap
+    closeLightbox.addEventListener('click', () => {
+        lightbox.classList.add('lightbox-hidden');
+    });
+
+    // Close lightbox if tapping outside the image
+    lightbox.addEventListener('click', (e) => {
+        if (e.target !== lightboxImg) {
+            lightbox.classList.add('lightbox-hidden');
+        }
+    });
+}
