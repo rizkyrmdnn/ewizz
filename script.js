@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle Opening the Card
     openBtn.addEventListener('click', () => {
+        const music = document.getElementById('bgMusic');
+        music.play();
         // Trigger Confetti
         confetti({
             particleCount: 150,
